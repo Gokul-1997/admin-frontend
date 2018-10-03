@@ -1,0 +1,51 @@
+ <div class="container-fluid">
+ <table class="table table-bordered" style="width:100%">
+        <tr>
+            <td class="col-md-2"><b>NAME</b></td>
+            <td class="col-md-2"><b>EMAIL</b></td>
+             <td class="col-md-2"><b>PHONE</b></td>
+             <td class="col-md-3"><b>Date</b></td>
+             <td class="col-md-3"><b>CURRENT DATE</b></td>
+        </tr>
+     </table>
+  </div>
+
+<div *ngFor = "let user of users">
+<mat-accordion>
+
+<mat-expansion-panel  (opened)="open(user.id)" (closed)="close()">
+  <mat-expansion-panel-header>
+    <mat-panel-title style="width:100%"> 
+    <table class="table table-bordered">
+        <tr>
+            <td class="col-md-2">{{user.firstname}}</td>
+            <td class="col-md-2">{{user.user_email}}</td>
+            <td class="col-md-2">{{user.phone}}</td>
+            <td class="col-md-3">{{user.created_at | date: 'dd-MM-yyyy' }}</td>
+            <td class="col-md-3">{{today  | date: 'dd-MM-yyyy' }}</td>
+        </tr>
+     </table>
+     </mat-panel-title>
+
+     
+  </mat-expansion-panel-header>
+    <table class="table table-bordered" >
+        <tr>
+            <th>Campaign Count</th>
+             <th>Order Data</th>
+             <th>Promotion Count</th>
+             <th>Promotion</th>
+             <th>Campaign</th>
+        </tr>
+        <tr *ngFor = "let use of user_data">
+            <td>{{use.campaign_count}}</td>
+            <td>{{use.order_data}}</td>
+            <td>{{use.promotion_count}}</td>
+            <td>{{use.promotion}}</td>
+            <td>{{use.campaign}}</td>
+        </tr>
+     </table>
+</mat-expansion-panel>
+
+</mat-accordion>
+</div>
